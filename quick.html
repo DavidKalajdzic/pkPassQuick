@@ -1,0 +1,45 @@
+<html>
+
+<head></head>
+
+
+<body>
+
+<form method="post" action="https://www.passsource.com/pass/register.php?templateId=1" enctype="multipart/form-data">
+  <label>Gate</label> <input type="text" name="psForm_0_structure_headerFields_gate_value" value="XX" id="structure_headerFields_gate_value">
+  <label>Departure City Name</label> <input type="text" name="psForm_0_structure_primaryFields_depart_label" value="XX" id="structure_primaryFields_depart_label">
+  <label>Departure Code</label> <input type="text" name="psForm_0_structure_primaryFields_depart_value" value="XX" id="structure_primaryFields_depart_value">
+  <label>Arrival City Name</label> <input type="text" name="psForm_0_structure_primaryFields_arrive_label" value="XX" id="structure_primaryFields_arrive_label">
+  <label>Arrival Code</label> <input type="text" name="psForm_0_structure_primaryFields_arrive_value" value="XX" id="structure_primaryFields_arrive_value">
+  <label>Passenger Name</label> <input type="text" name="psForm_0_structure_secondaryFields_passenger_value" value="XX" id="structure_secondaryFields_passenger_value">
+  <label>Departure Time</label> <input type="text" name="psForm_0_structure_auxiliaryFields_boardingTime_value" value="XX" id="structure_auxiliaryFields_boardingTime_value">
+  <label>Flight Number</label> <input type="text" name="psForm_0_structure_auxiliaryFields_flightNumber_value" value="XX" id="structure_auxiliaryFields_flightNumber_value">
+  <label>Class</label> <select name="psForm_0_structure_auxiliaryFields_class_value">
+                          <option value="Coach" selected="">Coach</option>
+                          <option value="Business">Business</option>
+                          <option value="First Class">First Class</option>
+                        </select>
+  <label>Date</label> <input type="text" name="psForm_0_structure_auxiliaryFields_date_value" value="XX" id="structure_auxiliaryFields_date_value">
+  <label>Passport</label> <input type="text" name="psForm_0_structure_backFields_passport_value" value="XX" id="structure_backFields_passport_value">
+  <label>Residence</label> <input type="text" name="psForm_0_structure_backFields_residence_value" value="XX" id="structure_backFields_residence_value">
+  <label>Barcode Message</label> <textarea name="psForm_0_barcode_message" id="barcode_message"></textarea>
+  <label>Transit Type</label> <select name="psForm_0_transitType">
+                        <option value="PKTransitTypeGeneric">Generic</option>
+                        <option value="PKTransitTypeAir" selected="">Air</option>
+                        <option value="PKTransitTypeBoat">Boat</option>
+                        <option value="PKTransitTypeBus">Bus</option>
+                        <option value="PKTransitTypeTrain">Train</option>
+                      </select>
+  <div class="clear"></div><input style="background-color: #4CAF50;font-size: 16px;" type="submit" name="psForm_0_submit" value="Register">
+  <input type="hidden" name="psForm" value="0">
+</form>
+
+
+</body>
+</html>
+
+
+<script>
+var content = prompt("Barcode Message :");
+document.getElementById("barcode_message").value = content;
+</script>
