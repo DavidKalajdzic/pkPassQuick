@@ -1,0 +1,4 @@
+#EXTM3U
+
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/RTS_un.svg/512px-RTS_un.svg.png" group-title="RTS UN",RTS UN HD
+https://streams.wilmaa.com/m3u8/get?channelId=rts_un_hd
