@@ -33,7 +33,7 @@ https://streams.wilmaa.com/m3u8/get?channelId=6_ter
 #EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/TV5_Monde_%282009-%29.svg/langfr-2880px-TV5_Monde_%282009-%29.svg.png" group-title="TV5 Monde",TV5 Monde
 https://streams.wilmaa.com/m3u8/get?channelId=tv_5_monde
 
-#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/7/73/Logo_RMC_Découverte_2012.png" group-title="RMC Découverte",RMC Découverte
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/7/73/Logo_RMC_Découverte_2012.png" group-title="RMC Decouverte",RMC Decouverte
 https://streams.wilmaa.com/m3u8/get?channelId=rmc_decouverte
 
 #EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/4/46/W9_logo_%282018%29.png" group-title="W9",W9
