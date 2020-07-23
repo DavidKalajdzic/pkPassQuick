@@ -22,14 +22,5 @@
             }
         ]
     },
-    "myaccess": {
-        "accountID": "5f196ad438304997248c045b",
-        "username": "toto",
-        "permissions": [
-            "READ",
-            "WRITE",
-            "ADMIN"
-        ]
-    },
     "archived": false
 }
