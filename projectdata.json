@@ -2,7 +2,11 @@
     "id": "5f196b30a5a03a36a7206a4e",
     "name": "Aldi",
     "description": "Aldi suisse",
-    "location": null,
+    "location": {
+        "address" : "chemin du ",
+        "longitude" : 118,
+        "latitude: : 712
+    },
     "root": {
         "id": "5f196b30a5a03a36a7206a4d",
         "name": "ROOT",
@@ -15,8 +19,6 @@
             {
                 "id": "5f196b89a5a03a36a7206a50",
                 "type": "TASK",
-                "name": "mdr",
-                "description": ""
             }
         ]
     },
