@@ -1,0 +1,15 @@
+{
+  "id": "okaygoogle",
+  "name": "google",
+  "description": "gugle",
+  "progress": {
+      "numerator" : 5,
+      "denominator" : 10
+  },
+  "subSteps":[
+  	{
+           "id" : "mdr",
+           "type": "TASK"
+      	}
+  ]
+}
