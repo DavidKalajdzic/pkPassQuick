@@ -1,15 +1,15 @@
 {
   "id": "5f196b30a5a03a36a7206a4d"
-	"name": "name man"
-	"description": "wow quelle desc"
+	"name": "name man",
+	"description": "wow quelle desc",
 	"progress": {
-      "numerator" : 5,
-      "denominator" : 10
-  }
-	var subSteps:[
-      {
-          "id" : "5f196b30a5a03a36a7206a4d"
-          "type": "PHASE"
-      }
-  ]
+     		 "numerator" : 5,
+     		 "denominator" : 10
+  	},
+	"subSteps":[
+      		{
+	          "id" : "5f196b30a5a03a36a7206a4d"
+        	  "type": "PHASE"
+      		}
+  	]
 }
