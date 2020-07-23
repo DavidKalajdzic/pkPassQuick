@@ -1,0 +1,33 @@
+{
+    "id": "5f196b30a5a03a36a7206a4e",
+    "name": "Aldi",
+    "description": "Aldi suisse",
+    "location": null,
+    "root": {
+        "id": "5f196b30a5a03a36a7206a4d",
+        "name": "ROOT",
+        "description": "",
+        "subSteps": [
+            {
+                "id": "5f196b81a5a03a36a7206a4f",
+                "type": "PHASE"
+            },
+            {
+                "id": "5f196b89a5a03a36a7206a50",
+                "type": "TASK",
+                "name": "mdr",
+                "description": ""
+            }
+        ]
+    },
+    "myaccess": {
+        "accountID": "5f196ad438304997248c045b",
+        "username": "toto",
+        "permissions": [
+            "READ",
+            "WRITE",
+            "ADMIN"
+        ]
+    },
+    "archived": false
+}
