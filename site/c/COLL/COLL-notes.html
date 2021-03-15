@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- 2021-03-10 Mer 06:56 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collections</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Michel Schinz">
+<link rel="stylesheet" href="../../a/cs108.css" type="text/css">
+<link rel="stylesheet" href="../../a/highlight/styles/github.css" type="text/css">
+<script src="../../a/highlight/highlight.pack.js"></script>
+<script>
+hljs.configure({ languages: [ 'java' ] });
+function orgHighlight() {
+  var blocks = document.querySelectorAll('pre.src');
+  Array.prototype.forEach.call(blocks, hljs.highlightBlock);
+}
+addEventListener('DOMContentLoaded', orgHighlight, false);
+addEventListener('load', orgHighlight, false);
+</script>
+<script type="text/javascript" src="../../a/mathjax/tex-chtml.js"></script>
+</head>
+<body>
+<div id="content">
+
+<div id="outline-container-org0434f3a" class="outline-3">
+<h3 id="org0434f3a"><span class="section-number-3">8.2</span> L'interface <code>Iterable</code></h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+La boucle <i>for-each</i> peut en fait être utilisée sur n'importe quel objet qui implémente l'interface <code>Iterable</code>, ce qui est entre autre le cas de <code>Collection</code>.
+</p>
+
+<p>
+L'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html"><code>Iterable</code></a>, très simple, ne possède qu'une seule méthode abstraite, la méthode <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html#iterator()"><code>iterator</code></a> vue précédemment :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public interface Iterable&lt;E&gt; {
+  public Iterator&lt;E&gt; iterator();
+}
+</pre>
+</div>
+<p>
+Son paramètre de type <code>E</code> représente le type des éléments parcourus par l'itérateur.
+</p>
+
+<p>
+En plus de cette méthode abstraite, l'interface <code>Iterable</code> offre une méthode par défaut, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer)"><code>forEach(Consumer&lt;E&gt; c)</code></a>, destinée à être utilisée avec une lambda. Cette méthode offre un troisième moyen de parcourir les éléments d'une collection, que nous examinerons dans la leçon consacrée aux lambdas.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org25738dd" class="outline-3">
+<h3 id="org25738dd"><span class="section-number-3">8.3</span> Itérateurs de listes</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+En plus de la méthode <code>iterator</code> qui fournit un itérateur de type <code>Iterator</code>, l'interface <code>List</code> définit une méthode nommée <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html#listIterator()"><code>listIterator</code></a> fournissant un itérateur de type <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html"><code>ListIterator</code></a> offrant des méthodes additionnelles pour :
+</p>
+
+<ul class="org-ul">
+<li>se déplacer en arrière (<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html#hasPrevious()"><code>hasPrevious</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html#previous()"><code>previous</code></a>),</li>
+
+<li>connaître l'index des éléments voisins de l'itérateur (<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html#nextIndex()"><code>nextIndex</code></a>, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html#previousIndex()"><code>previousIndex</code></a>),</li>
+
+<li>insérer un élément dans la liste, à l'endroit désigné par l'itérateur (<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html#add(E)"><code>add</code></a>),</li>
+
+<li>changer l'élément désigné par l'itérateur (<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ListIterator.html#set(E)"><code>set</code></a>).</li>
+</ul>
+
+<p>
+Logiquement, <code>add</code> et <code>set</code> sont optionnelles.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgafb9f47" class="outline-2">
+<h2 id="orgafb9f47"><span class="section-number-2">9</span> Ensembles</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Un <b>ensemble</b> (<i>set</i>) est une collection non ordonnée d'objets dans laquelle un objet peut apparaître au plus une fois. Cette notion d'ensemble correspond à la notion mathématique.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1d5f661" class="outline-2">
+<h2 id="org1d5f661"><span class="section-number-2">10</span> Ensembles en Java</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Dans la bibliothèque Java, le concept d'ensemble est représenté par l'interface <code>Set</code> et parmi les mises en œuvres figurent les classes <code>HashSet</code> et <code>TreeSet</code>.
+</p>
+
+<p>
+L'extrait de programme ci-dessous illustre leur utilisation en créant tout d'abord l'ensemble des voyelles non accentuées de l'alphabet latin puis en l'utilisant pour déterminer le nombre de voyelles que comporte le mot anglais <i>deinstitutionalization</i> :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">Set&lt;Character&gt; vowels = Set.of('a','e','i','o','u','y');
+
+String word = "deinstitutionalization";
+int vowelCount = 0;
+for (int i = 0; i &lt; word.length(); ++i) {
+  if (vowels.contains(word.charAt(i)))
+    vowelCount += 1;
+}
+System.out.println("Le mot " + word + " contient "
+		   + vowelCount + " voyelles.");
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org51062aa" class="outline-3">
+<h3 id="org51062aa"><span class="section-number-3">10.1</span> L'interface <code>Set</code></h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Le concept d'ensemble est représenté dans l'API Java par l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html"><code>Set</code></a> du paquetage <code>java.util</code>. Tout comme <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collection.html"><code>Collection</code></a> &#x2014; dont elle hérite &#x2014; cette interface est générique et son paramètre de type représente le type des éléments de l'ensemble :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public interface Set&lt;E&gt; extends Collection&lt;E&gt; { }
+</pre>
+</div>
+
+<p>
+Cette interface n'ajoute aucune méthode à celles héritées de <code>Collection</code>, son seul but étant d'offrir un type distinct pour les ensembles.
+</p>
+
+<p>
+Aux principales opérations sur les ensembles mathématiques correspond une méthode de l'interface <code>Set</code>, avec une différence importante : contrairement aux opérations mathématiques, les méthodes modifient l'ensemble auquel on les applique. La table ci-dessous donne les méthodes correspondant aux opérations mathématiques.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Opération</th>
+<th scope="col" class="org-left">Méthode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">union (\(\cup\))</td>
+<td class="org-left"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#addAll(java.util.Collection)"><code>addAll</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left">test d'appartenance (\(\in\)?)</td>
+<td class="org-left"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#contains(java.lang.Object)"><code>contains</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left">test d'inclusion (\(\subseteq\)?)</td>
+<td class="org-left"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#containsAll(java.util.Collection)"><code>containsAll</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left">différence (\)</td>
+<td class="org-left"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#removeAll(java.util.Collection)"><code>removeAll</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left">intersection (\(\cap\))</td>
+<td class="org-left"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#retainAll(java.util.Collection)"><code>retainAll</code></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org45ec08e" class="outline-3">
+<h3 id="org45ec08e"><span class="section-number-3">10.2</span> Ensembles immuables</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Tout comme pour les listes, l'interface <code>Set</code> offre une méthode statique permettant de construire un ensemble immuable :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#of(E...)"><code>&lt;E&gt; Set&lt;E&gt; of(E... es)</code></a>, retourne un ensemble immuable contenant les éléments donnés.</li>
+</ul>
+
+<p>
+De plus, elle offre une méthode statique permettant de construire un ensemble immuable contenant les mêmes éléments qu'une collection donnée :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html#copyOf(java.util.Collection)"><code>&lt;E&gt; Set&lt;E&gt; copyOf​(Collection&lt;E&gt; c)</code></a>, retourne un ensemble immuable contenant les éléments de la collection donnée.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org91ce1d7" class="outline-3">
+<h3 id="org91ce1d7"><span class="section-number-3">10.3</span> Ensembles non modifiables</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+Tout comme pour les listes, la classe <code>Collections</code> offre une méthode permettant d'obtenir une vue non modifiable sur un ensemble :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#unmodifiableSet(java.util.Set)"><code>&lt;E&gt; Set&lt;E&gt; unmodifiableSet(Set&lt;E&gt; s)</code></a></li>
+</ul>
+
+<p>
+Comme d'habitude, il faut prendre garde au fait qu'il s'agit d'une vue et que toute éventuelle modification à l'ensemble sous-jacent sera répercutée sur la vue ! Celle-ci est donc non modifiable mais pas forcément immuable.
+</p>
+
+<p>
+Dès lors, comme avec les listes, pour obtenir une version immuable d'un ensemble, il faut copier celui-ci (aussi profondément que nécessaire).
+</p>
+
+<div class="cs108rule" id="orge36994d">
+<p>
+<b>Règle des ensembles immuables :</b>
+Pour obtenir un ensemble immuable à partir d'un ensemble quelconque, utilisez la méthode <code>copyOf</code> de l'interface <code>Set</code>.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org047db94" class="outline-3">
+<h3 id="org047db94"><span class="section-number-3">10.4</span> Parcours</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+Etant donné que l'interface <code>Set</code> implémente (indirectement) l'interface <code>Iterable</code>, les éléments d'un ensemble peuvent être parcourus au moyen d'un itérateur ou de la boucle <i>for-each</i>, comme ceux d'une liste.
+</p>
+
+<div class="cs108warning" id="org7172dd7">
+<p>
+Attention : contrairement aux éléments d'une liste, les éléments d'un ensemble ne sont pas ordonnés. Dès lors, l'ordre de parcours des éléments d'un ensemble dépend de la mise en œuvre utilisée :
+</p>
+<ul class="org-ul">
+<li><code>TreeSet</code> les parcourt dans l'ordre croissant,</li>
+<li><code>HashSet</code> les parcourt dans un ordre arbitraire, qui peut changer d'une exécution à l'autre d'un programme, et même être différent entre deux instances contenant les <i>mêmes</i> éléments !</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org855e1a6" class="outline-3">
+<h3 id="org855e1a6"><span class="section-number-3">10.5</span> Mises en œuvres des ensembles</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+On l'a dit, la bibliothèque Java offre deux mises en œuvre principales des ensembles. Avant de les examiner et de les comparer, posons-nous toutefois la question de leur utilité. Ne serait-il pas possible d'utiliser simplement des listes (sans doublons) afin de représenter les ensembles ?
+</p>
+
+<p>
+En théorie, oui, et cela est même relativement simple sachant que la seule différence entre une liste « normale » et une liste représentant un ensemble est que cette dernière ne contient pas de doublons. Pour garantir cette propriété, il suffit d'utiliser la méthode <code>contains</code> fournie par l'interface <code>Collection</code> afin de s'assurer de l'absence d'un élément avant de l'ajouter à la liste.
+</p>
+
+<p>
+Malheureusement, représenter un ensemble au moyen d'une liste est coûteux, car les principales opérations (ajout, test d'appartenance, etc.) ont une complexité de O(<i>n</i>). Intuitivement, cela est dû au fait que chacune de ces opérations nécessite un parcours de la totalité des éléments de la liste.
+</p>
+
+<p>
+D'autres mises en œuvre, plus efficaces, sont donc fournies dans la bibliothèque Java. Néanmoins, chacune d'entre elles exige que certaines opérations puissent être effectuées sur les éléments de l'ensemble, afin de pouvoir les organiser en mémoire. Les deux mises en œuvre que nous examinerons, et leurs exigences concernant les éléments, sont :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/TreeSet.html"><code>TreeSet</code></a>, qui exige que les éléments de l'ensemble puissent être triés,</li>
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html"><code>HashSet</code></a>, qui exige que les éléments de l'ensemble puissent être « hachés », notion examinée dans une leçon ultérieure.</li>
+</ul>
+
+<p>
+<code>TreeSet</code> doit son nom au fait qu'elle stocke les éléments de l'ensemble dans un <b>arbre binaire de recherche</b> (<i>binary search tree</i>), tandis que <code>HashSet</code> doit le sien au fait qu'elle les stocke dans une <b>table de hachage</b> (<i>hash table</i>). Ces concepts seront examinés ultérieurement, mais il importe déjà de savoir que grâce à eux, <code>TreeSet</code> peut mettre en œuvre les opérations principales sur les ensembles (ajout, test d'appartenance, etc.) en O(log <i>n</i>), tandis que <code>HashSet</code> fait encore mieux et les met en œuvre en O(1), ce qui est remarquable !
+</p>
+
+<p>
+Malgré ses performances moindres, <code>TreeSet</code> offre néanmoins un avantage par rapport à <code>HashSet</code>, déjà mentionné plus haut : étant donné qu'elle stocke les éléments de l'ensemble sous forme triée, ceux-ci sont parcourus dans cet ordre. <code>HashSet</code>, quant à celle, ne donne aucune garantie concernant l'ordre de parcours. Dès lors, malgré ses meilleures performances, <code>HashSet</code> n'est pas forcément toujours préférable à <code>TreeSet</code>.
+</p>
+
+<div class="cs108rule" id="orgeb726ad">
+<p>
+<b>Règle <code>HashSet</code> / <code>TreeSet</code> :</b>
+Utilisez <code>HashSet</code> comme mise en œuvre des ensembles en Java, sauf lorsqu'il est utile de parcourir les éléments en ordre croissant, auquel cas vous pourrez lui préférer <code>TreeSet</code>.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcc3fea8" class="outline-2">
+<h2 id="orgcc3fea8"><span class="section-number-2">11</span> Tables associatives</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Une <b>table associative</b> (<i>map</i>) ou <b>dictionnaire</b> (<i>dictionary</i>) est une collection qui associe des <b>valeurs</b> (<i>values</i>) à des <b>clefs</b> (<i>keys</i>).
+</p>
+
+<p>
+Par exemple, l'index d'un livre est une table associative qui associe à différents mots (les clefs) la liste des numéros de pages sur lesquelles ce mot apparaît (les valeurs).
+</p>
+
+<p>
+En informatique, un tableau &#x2014; ou une liste &#x2014; peut être vu comme un cas particulier d'une table associative dont les clefs sont les entiers compris entre 0 et la taille du tableau, et les valeurs sont les éléments du tableau.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7ce1cde" class="outline-2">
+<h2 id="org7ce1cde"><span class="section-number-2">12</span> Tables associatives en Java</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Dans la bibliothèque Java, le concept de table associative est représenté par l'interface <code>Map</code> et parmi les mises en œuvres figurent les classes <code>HashMap</code> et <code>TreeMap</code>.
+</p>
+
+<p>
+L'extrait de programme ci-dessous illustre leur utilisation en traduisant en code Morse le mot <i>java</i>. Pour ce faire, une table associant leur encodage en Morse (les valeurs) aux caractères de l'alphabet (les clefs) est tout d'abord construite. Cela fait, la chaîne <i>java</i> est parcourue, caractère par caractère, et la traduction en Morse de chacun d'entre eux est obtenue de la table et affichée à l'écran :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">Map&lt;Character, String&gt; morse =
+  Map.of('a', ".-",
+	 'j', ".---",
+	 'v', "...-");
+// … à compléter avec le reste de l'alphabet morse
+
+String java = "java";
+for (int i = 0; i &lt; java.length(); ++i)
+  System.out.print(morse.get(java.charAt(i)) + " ");
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org25596fc" class="outline-3">
+<h3 id="org25596fc"><span class="section-number-3">12.1</span> L'interface <code>Map</code></h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Le concept de table associative est représenté dans l'API Java par l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html"><code>Map</code></a> du paquetage <code>java.util</code>. Cette interface est générique et prend deux paramètres de type nommés <code>K</code> et <code>V</code> qui représentent respectivement le type des clefs (<i>keys</i>) et celui des valeurs (<i>values</i>) :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public interface Map&lt;K, V&gt; {
+  // … méthodes
+}
+</pre>
+</div>
+<p>
+A noter que contrairement aux interfaces <code>List</code> et <code>Set</code>, l'interface <code>Map</code> n'hérite pas de <code>Collection</code>, ni de <code>Iterable</code>.
+</p>
+
+<p>
+Les principales méthodes de cette interface sont présentées ci-après, parfois avec un type simplifié pour des raisons pédagogiques.
+</p>
+</div>
+
+<div id="outline-container-orgd5ae16e" class="outline-4">
+<h4 id="orgd5ae16e"><span class="section-number-4">12.1.1</span> Consultation</h4>
+<div class="outline-text-4" id="text-12-1-1">
+<p>
+Les méthodes ci-dessous, comme toutes celles qui ne modifient pas la table associative, sont obligatoires :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#isEmpty()"><code>boolean isEmpty()</code></a>, retourne vrai ssi la table associative est vide.</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#size()"><code>int size()</code></a>, retourne le nombre d'associations clef/valeur contenues dans la table associative.</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#containsKey(java.lang.Object)"><code>boolean containsKey(Object k)</code></a>, retourne vrai ssi la table contient la clef donnée.</li>
+</ul>
+
+<p>
+Le type de l'argument de la dernière méthode devrait être <code>K</code>, mais est <code>Object</code> pour de malheureuses raisons historiques.
+</p>
+
+<p>
+Les méthodes ci-dessous permettent d'obtenir la valeur associée à une clef et sont probablement les méthodes les plus utilisées des tables associatives :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#get(java.lang.Object)"><code>V get(Object k)</code></a>, retourne la valeur associée à la clef donnée, ou <code>null</code> si cette clef n'est pas présente dans la table.</li>
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#getOrDefault(java.lang.Object,V)"><code>V getOrDefault(Object k, V d)</code></a>, retourne la valeur associée à la clef donnée, ou la valeur par défaut donnée si la clef n'est pas présente dans la table.</li>
+</ul>
+
+<p>
+Là aussi, le type de la clef devrait être <code>K</code> et pas <code>Object</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org60ed96b" class="outline-4">
+<h4 id="org60ed96b"><span class="section-number-4">12.1.2</span> Ajout et modification</h4>
+<div class="outline-text-4" id="text-12-1-2">
+<p>
+Les méthodes d'ajout/modification ci-dessous sont comme d'habitude optionnelles :
+</p>
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#put(K,V)"><code>V put(K k, V v)</code></a>, associe la valeur donnée avec la clef donnée et retourne la valeur qui lui était associée ou <code>null</code> s'il n'y en avait aucune,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#putIfAbsent(K,V)"><code>V putIfAbsent(K k, V v)</code></a>, si la clef donnée n'est pas encore associée à une valeur, l'associe à la valeur donnée et retourne <code>null</code> ; sinon, retourne la valeur associée à la clef,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#putAll(java.util.Map)"><code>void putAll(Map&lt;K, V&gt; m)</code></a>, copie toutes les associations clef/valeur de la table donnée dans la table à laquelle la méthode est appliquée.</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#computeIfAbsent(K,java.util.function.Function)"><code>V computeIfAbsent(K k, Function&lt;K,V&gt; f)</code></a>, si la clef donnée n'est pas encore associée à une valeur, l'associe au résultat de la fonction appliquée à la clef, et retourne cette valeur ; sinon, retourne la valeur déjà associée à la clef [&lambda;],</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#merge(K,V,java.util.function.BiFunction)"><code>V merge(K k, V v, BiFunction&lt;V,V,V&gt; f)</code></a>, si la clef donnée n'est pas encore associée à une valeur, lui associe la valeur donnée ; sinon, remplace la valeur qui lui est actuellement associée par la fonction appliquée à la valeur actuelle et la valeur donnée ; retourne la valeur associée à la clef [&lambda;].</li>
+</ul>
+
+<p>
+D'autres méthodes d'ajout/modification existent, parmi lesquelles  <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#compute(K,java.util.function.BiFunction)"><code>compute</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#computeIfPresent(K,java.util.function.BiFunction)"><code>computeIfPresent</code></a>, mais sont plus rarement utiles et donc pas décrites ici.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd3f2584" class="outline-4">
+<h4 id="orgd3f2584"><span class="section-number-4">12.1.3</span> Remplacement</h4>
+<div class="outline-text-4" id="text-12-1-3">
+<p>
+Les méthodes de remplacement ci-dessous sont optionnelles :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#replace(K,V)"><code>V replace(K k, V v)</code></a>, si la table contient une valeur associée à la clef donnée, la remplace par la valeur donnée et retourne l'ancienne valeur ; sinon, ne modifie pas la table et retourne <code>null</code>,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#replace(K,V,V)"><code>boolean replace(K k, V v1, V v2)</code></a>, si la table associe actuellement la clef donnée à la première valeur donnée, lui associe la seconde valeur donnée et retourne vrai ; sinon, ne modifie pas la table et retourne faux,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#replaceAll(java.util.function.BiFunction)"><code>void replaceAll(BiFunction&lt;K,V,V&gt; f)</code></a>, remplace chaque <i>valeur</i> de la table par le résultat de l'application de la fonction passée à la paire clef/valeur à laquelle elle appartient [&lambda;].</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org15bcc9d" class="outline-4">
+<h4 id="org15bcc9d"><span class="section-number-4">12.1.4</span> Suppression</h4>
+<div class="outline-text-4" id="text-12-1-4">
+<p>
+Les méthodes de suppression ci-dessous sont optionnelles :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#clear()"><code>void clear()</code></a>, vide la table en supprimant toutes les associations clef/valeur,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#remove(java.lang.Object)"><code>V remove(Object k)</code></a>, supprime la clef donnée de la table ainsi que la valeur qui lui était associée ; retourne cette dernière ou <code>null</code> si la clef n'était pas présente,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#remove(java.lang.Object,java.lang.Object)"><code>boolean remove(Object k, Object v)</code></a>, supprime la clef donnée de la table ssi elle est associée à la valeur donnée ; retourne vrai ssi la table a été modifiée en conséquence.</li>
+</ul>
+
+<p>
+Comme précédemment, l'utilisation de <code>Object</code> en lieu et place de <code>K</code> ou <code>V</code> est une erreur historique.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc783812" class="outline-4">
+<h4 id="orgc783812"><span class="section-number-4">12.1.5</span> Vues sur les clefs et valeurs</h4>
+<div class="outline-text-4" id="text-12-1-5">
+<p>
+Les méthodes ci-dessous permettent d'obtenir des vues sur les clefs, les valeurs ou les paires clefs/valeurs :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#keySet()"><code>Set&lt;K&gt; keySet()</code></a>, retourne une vue sur l'ensemble des clefs de la table,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#values()"><code>Collection&lt;V&gt; values()</code></a>, retourne une vue sur les valeurs de la table,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#entrySet()"><code>Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet()</code></a>, retourne une vue sur l'ensemble des associations clef/valeur de la table.</li>
+</ul>
+
+<p>
+Si la table est modifiable, ces vues le sont également et les modifications qu'on y apporte sont reportées sur la table &#x2014; et inversement.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d9876d" class="outline-3">
+<h3 id="org6d9876d"><span class="section-number-3">12.2</span> L'interface <code>Map.Entry</code></h3>
+<div class="outline-text-3" id="text-12-2">
+<p>
+L'interface <code>Map.Entry</code> — imbriquée statiquement dans l'interface <code>Map</code> — représente une association entre une clef et une valeur, aussi appelée paire clef/valeur.
+</p>
+
+<p>
+Tout comme l'interface <code>Map</code>, l'interface <code>Entry</code> est générique et prend deux paramètres de type : le type <code>K</code> de la clef et le type <code>V</code> de la valeur qui lui est associée.
+</p>
+<div class="org-src-container">
+<pre class="src src-java">public interface Map&lt;K, V&gt; {
+  public static interface Entry&lt;K, V&gt; {
+    // … méthodes
+  }
+}
+</pre>
+</div>
+
+<p>
+L'interface <code>Map.Entry</code> offre deux méthodes permettant respectivement d'accéder à la clef et à la valeur de la paire clef/valeur qu'elle représente :
+</p>
+
+<ul class="org-ul">
+<li><code>K getKey()</code>, retourne la clef de la paire,</li>
+
+<li><code>V getValue()</code>, retourne la valeur de la paire.</li>
+</ul>
+
+<p>
+De plus, elle offre une méthode optionnelle permettant de modifier la valeur associée à la clef :
+</p>
+
+<ul class="org-ul">
+<li><code>void setValue(V v)</code>, remplace la valeur de la paire par celle donnée.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgae1d20f" class="outline-3">
+<h3 id="orgae1d20f"><span class="section-number-3">12.3</span> Tables immuables</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+Comme les interfaces <code>List</code> et <code>Set</code>, l'interface <code>Map</code> possède une famille de méthodes statiques nommées <code>of</code> et permettant de créer des tables associatives immuables. Les versions à 0, 1 et 2 arguments sont :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#of()"><code>&lt;K, V&gt; Map&lt;K, V&gt; of()</code></a>, qui retourne une table associative immuable vide,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#of(K,V)"><code>&lt;K, V&gt; Map&lt;K, V&gt; of(K k, V v)</code></a>, qui retourne une table associative immuable contenant uniquement la paire clef/valeur donnée,</li>
+
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#of(K,V,K,V)"><code>&lt;K, V&gt; Map&lt;K, V&gt; of(K k1, V v1, K k2, V v2)</code></a>, qui retourne une table associative immuable contenant les deux paires clef/valeur données.</li>
+</ul>
+
+<p>
+Des méthodes similaires prenant jusqu'à 10 paires clef/valeur existent.
+</p>
+
+<p>
+De plus, l'interface <code>Map</code> offre une méthode statique permettant de construire une table associative immuable contenant les mêmes éléments qu'une autre table donnée :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#copyOf(java.util.Map)"><code>&lt;K,V&gt; Map&lt;K,V&gt; copyOf​(Map&lt;K,V&gt; m)</code></a>, retourne une table associative immuable contenant les mêmes éléments que la table donnée.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org329fdea" class="outline-3">
+<h3 id="org329fdea"><span class="section-number-3">12.4</span> Tables non modifiables</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+Tout comme pour les listes, la classe <code>Collections</code> offre une méthode permettant d'obtenir une vue non modifiable sur une table associative :
+</p>
+
+<ul class="org-ul">
+<li><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#unmodifiableMap(java.util.Map)"><code>&lt;K,V&gt; Map&lt;K, V&gt; unmodifiableMap(Map&lt;K, V&gt; m)</code></a></li>
+</ul>
+
+<p>
+Comme d'habitude, il faut prendre garde au fait qu'il s'agit d'une vue et que toute éventuelle modification à la table sous-jacente sera répercutée sur la vue ! Celle-ci est donc non modifiable mais pas forcément immuable.
+</p>
+
+<div class="cs108rule" id="orgffd964c">
+<p>
+<b>Règle des tables associatives immuables :</b>
+Pour obtenir une table associative immuable à partir d'une table associative quelconque, utilisez la méthode <code>copyOf</code> de l'interface <code>Map</code>.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org351c4df" class="outline-3">
+<h3 id="org351c4df"><span class="section-number-3">12.5</span> Parcours</h3>
+<div class="outline-text-3" id="text-12-5">
+<p>
+L'interface <code>Map</code> n'étend malheureusement pas l'interface <code>Iterable</code>, et il n'est donc pas possible de parcourir directement les paires clef/valeur d'une table associative au moyen d'un itérateur.
+</p>
+
+<p>
+Il est par contre possible de parcourir ces paires clef/valeur par l'intermédiaire de la vue fournie par <code>entrySet</code> :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">Map&lt;String, Integer&gt; m = /* … */;
+for (Map.Entry&lt;String, Integer&gt; e: m.entrySet())
+  System.out.println(e.getKey() + "-&gt;" + e.getValue());
+</pre>
+</div>
+
+<p>
+D'autre part, l'interface <code>Map</code> offre la méthode <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html#forEach(java.util.function.BiConsumer)"><code>forEach</code></a>, qui n'est pas celle de <code>Iterable</code> mais qui a le même but. Elle prend en argument un consommateur de type <code>BiConsumer&lt;K,V&gt;</code>, c-à-d une fonction à deux arguments &#x2014; ici, la clef et la valeur &#x2014; ne retournant rien.
+</p>
+
+<p>
+La méthode <code>forEach</code> est destinée à être utilisée avec une lambda, et offre une manière particulièrement agréable de parcourir les paires clef/valeur d'une table associative. Par exemple, la boucle ci-dessus peut s'écrire plus simplement ainsi :
+</p>
+<div class="org-src-container">
+<pre class="src src-java">Map&lt;String, Integer&gt; m = /* … */;
+m.forEach((k, v) -&gt; System.out.println(k + "-&gt;" + v));
+</pre>
+</div>
+
+<p>
+Attention : comme pour les ensembles, l'ordre de parcours dépend de la mise en œuvre utilisée. Avec <code>TreeSet</code>, le parcours se fait par ordre croissant des clefs, tandis qu'avec <code>HashSet</code>, le parcours se fait dans un ordre quelconque.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga5b55f2" class="outline-3">
+<h3 id="orga5b55f2"><span class="section-number-3">12.6</span> Mises en œuvre des tables associatives</h3>
+<div class="outline-text-3" id="text-12-6">
+<p>
+La bibliothèque Java offre deux mises en œuvre principales des tables associatives, <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/TreeMap.html"><code>TreeMap</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html"><code>HashMap</code></a>. Comme la similarité de leurs noms l'indique, ces mises en œuvres sont basées sur les mêmes techniques que les classes <code>TreeSet</code> et <code>HashSet</code>. Dès lors, elles ont les mêmes caractéristiques principales, à savoir :
+</p>
+
+<ul class="org-ul">
+<li><code>TreeMap</code> exige que ses <i>clefs</i> soient comparables, et utilise cette caractéristique pour offrir les opérations principales en O(log <i>n</i>), tout en garantissant que les paires clef/valeur sont parcourues par ordre croissant des clefs,</li>
+
+<li><code>HashMap</code> exige que ses <i>clefs</i> soient hachables, et utilise cette caractéristique pour offrir les opérations principales en O(1), mais ne donne aucune garantie quant à l'ordre de parcours des paires clef/valeur.</li>
+</ul>
+
+<p>
+Notez que seules les clefs doivent être comparables (pour <code>TreeMap</code>) ou hachables (pour <code>HashMap</code>), aucune exigence n'est placée sur les valeurs d'une table associative.
+</p>
+
+<p>
+Le fait que les techniques de mise en œuvre des ensembles et des tables associatives soient similaires peut sembler surprenant au premier abord. Toutefois, à la réflexion, on se rend compte qu'il y a une très grande similarité entre ces deux types de collections :
+</p>
+
+<ul class="org-ul">
+<li>un ensemble peut être vu comme une table associative dont seules les clefs importent, les valeurs étant ignorées,</li>
+
+<li>une table associative peut être vue comme un ensemble de paires clef/valeur &#x2014; pour peu que la valeur soit ignorée dans les tests d'égalité, les comparaisons et le hachage.</li>
+</ul>
+
+<p>
+En pratique, la bibliothèque Java tire parti de ces similarités, puisque <code>HashSet</code> est mis en œuvre au moyen de <code>HashMap</code>, tandis que <code>TreeSet</code> est mise en œuvre au moyen de <code>TreeMap</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org51a1393" class="outline-2">
+<h2 id="org51a1393"><span class="section-number-2">13</span> Références</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li><a href="https://ebookcentral.proquest.com/lib/epflch/detail.action?docID=443222">Java Generics and Collections</a> de Maurice Naftalin et Philip Wadler, en particulier :
+<ul class="org-ul">
+<li><a href="https://ebookcentral.proquest.com/lib/epflch/reader.action?docID=443222&amp;ppg=231">le chapitre 15, <i>Lists</i></a> sur les listes,</li>
+<li><a href="https://ebookcentral.proquest.com/lib/epflch/reader.action?docID=443222&amp;ppg=189">le chapitre 13, <i>Sets</i></a> sur les ensembles,</li>
+<li><a href="https://ebookcentral.proquest.com/lib/epflch/reader.action?docID=443222&amp;ppg=241">le chapitre 16, <i>Maps</i></a> sur les tables associatives.</li>
+</ul></li>
+<li>différents documents fournis par Oracle au sujet des collections, en particulier :
+<ul class="org-ul">
+<li>le tutoriel <a href="https://docs.oracle.com/javase/tutorial/collections/"><i>Java Collections Framework</i></a>,</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html"><i>Collections Framework Overview</i></a>,</li>
+<li><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/collections/reference.html"><i>Outline of the Collections Framework</i></a>,</li>
+</ul></li>
+<li>la documentation de l'API Java, en particulier les classes et interfaces suivantes :
+<ul class="org-ul">
+<li>l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collection.html"><code>java.util.Collection</code></a>,</li>
+<li>les classes <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html"><code>java.util.Collections</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Arrays.html"><code>java.util.Arrays</code></a>,</li>
+<li>l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html"><code>java.util.Iterator</code></a>.</li>
+<li>pour les listes :
+<ul class="org-ul">
+<li>l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html"><code>java.util.List</code></a>,</li>
+<li>les classes <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html"><code>java.util.ArrayList</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/LinkedList.html"><code>java.util.LinkedList</code></a>,</li>
+</ul></li>
+<li>pour les ensembles :
+<ul class="org-ul">
+<li>l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html"><code>java.util.Set</code></a>,</li>
+<li>les classes <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html"><code>java.util.HashSet</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/TreeSet.html"><code>java.util.TreeSet</code></a>,</li>
+</ul></li>
+<li>pour les tables associatives :
+<ul class="org-ul">
+<li>l'interface <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html"><code>java.util.Map</code></a>,</li>
+<li>les classes <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html"><code>java.util.HashMap</code></a> et <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/TreeMap.html"><code>java.util.TreeMap</code></a>.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+  <h2 class="footnotes">Notes de bas de page</h2>
+  <div id="text-footnotes">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+L'accès aléatoire signifie que l'accès à un élément dont on connaît l'index se fait en O(1), alors que l'accès séquentiel signifie que la même opération se fait en O(<i>n</i>).
+</p></div></div>
+
+</div>
+</div></div>
+</body>
+</html>

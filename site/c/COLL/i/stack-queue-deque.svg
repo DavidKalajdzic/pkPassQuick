@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="53.358274 22.188982 250.44885 185.72836" width="250.44885" height="185.72836">
+  <defs>
+    <font-face font-family="PT Sans" font-size="16" panose-1="2 11 5 3 2 2 3 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="500" cap-height="700" ascent="899.9939" descent="-276.00098" font-weight="400">
+      <font-face-src>
+        <font-face-name name="PTSans-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.18.1\n2021-01-05 09:12:47 +0000</metadata>
+  <g id="Canevas_1" stroke-dasharray="none" fill-opacity="1" stroke="none" fill="none" stroke-opacity="1">
+    <title>Canevas 1</title>
+    <g id="Canevas_1_Calque_1">
+      <title>Calque 1</title>
+      <g id="Graphic_20">
+        <text transform="translate(143.0227 30.023628)" fill="black">
+          <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="0" y="14">pile (LIFO)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_21">
+        <text transform="translate(145.1747 92.87403)" fill="black">
+          <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="0" y="14">file (FIFO)</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22">
+        <text transform="translate(157.5427 155.23624)" fill="black">
+          <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="8739676e-19" y="14">deque</tspan>
+        </text>
+      </g>
+      <g id="Line_25">
+        <line x1="272.126" y1="58.527566" x2="290.57247" y2="58.527566" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Group_49">
+        <g id="Graphic_55">
+          <rect x="85.03938" y="51.02363" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="85.03938" y="51.02363" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(90.03938 55.24483)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">1</tspan>
+          </text>
+        </g>
+        <g id="Graphic_54">
+          <rect x="124.72442" y="51.02363" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="124.72442" y="51.02363" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(129.72442 55.24483)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">2</tspan>
+          </text>
+        </g>
+        <g id="Graphic_53">
+          <rect x="164.40947" y="51.02363" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="164.40947" y="51.02363" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(169.40947 55.24483)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">3</tspan>
+          </text>
+        </g>
+        <g id="Graphic_52">
+          <rect x="204.0945" y="51.02363" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="204.0945" y="51.02363" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(209.0945 55.24483)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">4</tspan>
+          </text>
+        </g>
+        <g id="Graphic_51">
+          <rect x="243.77955" y="51.02363" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="243.77955" y="51.02363" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(248.77955 55.24483)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">5</tspan>
+          </text>
+        </g>
+        <g id="Line_50">
+          <line x1="282.026" y1="72.700796" x2="300.47247" y2="72.700796" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+      <g id="Graphic_30">
+        <text transform="translate(278.91703 40.58817)" fill="black">
+          <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="8730794e-19" y="14">±</tspan>
+        </text>
+      </g>
+      <g id="Group_39">
+        <g id="Graphic_48">
+          <rect x="85.03938" y="113.62993" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="85.03938" y="113.62993" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(90.03938 117.85114)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">1</tspan>
+          </text>
+        </g>
+        <g id="Graphic_47">
+          <rect x="124.72442" y="113.62993" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="124.72442" y="113.62993" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(129.72442 117.85114)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">2</tspan>
+          </text>
+        </g>
+        <g id="Graphic_46">
+          <rect x="164.40947" y="113.62993" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="164.40947" y="113.62993" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(169.40947 117.85114)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">3</tspan>
+          </text>
+        </g>
+        <g id="Graphic_45">
+          <rect x="204.0945" y="113.62993" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="204.0945" y="113.62993" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(209.0945 117.85114)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">4</tspan>
+          </text>
+        </g>
+        <g id="Graphic_44">
+          <rect x="243.77955" y="113.62993" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="243.77955" y="113.62993" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(248.77955 117.85114)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">5</tspan>
+          </text>
+        </g>
+        <g id="Line_43">
+          <line x1="282.026" y1="127.80316" x2="300.47247" y2="127.80316" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Line_42">
+          <line x1="66.59292" y1="127.80316" x2="85.03938" y2="127.80316" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_41">
+          <text transform="translate(285.8936 109.95606)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="8730794e-19" y="14">+</tspan>
+          </text>
+        </g>
+        <g id="Graphic_40">
+          <text transform="translate(71.31375 109.95606)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="6545875e-19" y="14">–</tspan>
+          </text>
+        </g>
+      </g>
+      <g id="Line_33">
+        <line x1="272.126" y1="183.05038" x2="290.57247" y2="183.05038" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_35">
+        <text transform="translate(278.91703 165.11098)" fill="black">
+          <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="8730794e-19" y="14">±</tspan>
+        </text>
+      </g>
+      <g id="Group_56">
+        <g id="Graphic_65">
+          <rect x="85.03938" y="176.23624" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="85.03938" y="176.23624" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(90.03938 180.45744)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">1</tspan>
+          </text>
+        </g>
+        <g id="Graphic_64">
+          <rect x="124.72442" y="176.23624" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="124.72442" y="176.23624" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(129.72442 180.45744)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">2</tspan>
+          </text>
+        </g>
+        <g id="Graphic_63">
+          <rect x="164.40947" y="176.23624" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="164.40947" y="176.23624" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(169.40947 180.45744)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">3</tspan>
+          </text>
+        </g>
+        <g id="Graphic_62">
+          <rect x="204.0945" y="176.23624" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="204.0945" y="176.23624" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(209.0945 180.45744)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">4</tspan>
+          </text>
+        </g>
+        <g id="Graphic_61">
+          <rect x="243.77955" y="176.23624" width="28.34646" height="28.34646" fill="white"/>
+          <rect x="243.77955" y="176.23624" width="28.34646" height="28.34646" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <text transform="translate(248.77955 180.45744)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="4.81323" y="14">5</tspan>
+          </text>
+        </g>
+        <g id="Line_60">
+          <line x1="282.026" y1="197.2236" x2="300.47247" y2="197.2236" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Line_59">
+          <line x1="56.69292" y1="183.74018" x2="75.13938" y2="183.74018" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Line_58">
+          <line x1="66.59292" y1="197.9134" x2="85.03938" y2="197.9134" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_57">
+          <text transform="translate(63.483936 165.80078)" fill="black">
+            <tspan font-family="PT Sans" font-size="16" font-weight="400" fill="black" x="8730794e-19" y="14">±</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
